@@ -89,17 +89,24 @@ function test_input($data) {
 
 
 <html>
+	<head>
+		<title>Register with ShopSmart</title>
+		<link rel="stylesheet" type="text/css" href="register.css">
+	</head>
 	<body>
+		<div id="logo" style="text-align:center; margin-top:100px;"><span style="font-family:Impact; font-size:80px; color:orange; font-style:italic;">ShopSmart</span></div>
+		<div class="registrationform">
 		<form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-			First Name: 
+
+			First Name:
 			<input type="text" name="firstname" id="firstname">
 			<span class="error"><?php echo $firstNameErr;?></span>
 			<br><br>
-			Last Name: 
+			Last Name:
 			<input type="text" name="lastname" id="lastname">
 			<span class="error"><?php echo $lastNameErr;?></span>
 			<br><br>
-			Username: 
+			Username:
 			<input type="text" name="username" id="username">
 			<span class="error"><?php echo $usernameErr;?></span>
 			<br><br>
@@ -107,11 +114,12 @@ function test_input($data) {
 			<input type="password" name="password" id="password">
 			<span class="error"><?php echo $passwordErr;?></span>
 			<br><br>
-			Email:
+			Email: 
 			<input type="text" name="email" id="email">
 			<span class="error"><?php echo $emailErr;?></span>
 			<br><br>
 			<input type="submit" name="submit" value="Register">
 		</form>
+		</div>
 	</body>
 </html>
