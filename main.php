@@ -63,7 +63,7 @@
 
 				$product = $_GET['product'];
 				$cxn = mysqli_connect('localhost', 'root', '', 'shopsmart') or die ('Could not connect');
-				$query = mysqli_query($cxn, "SELECT product.productName, product.price, store.storeName, store.address FROM product INNER JOIN store ON product.storeID=store.storeID WHERE product.productName LIKE '%$product%' AND numberInStock>0");
+				$query = mysqli_query($cxn, "SELECT product.productID, product.productName, product.price, store.storeName, store.address FROM product INNER JOIN store ON product.storeID=store.storeID WHERE product.productName LIKE '%$product%' AND numberInStock>0");
 				
 				$counter = 0;
 				while($row = mysqli_fetch_array($query)) {
@@ -77,12 +77,13 @@
 						<th>Address</th>
 					</tr>";
 					
+					$productID = $row['productID'];
 					$name = $row['productName'];
 					$price = $row['price'];
 					$store = $row['storeName'];
 					$address = $row['address'];
 					echo "<tr>
-							<td>$name</td>
+							<td><a href=\"product.php?pid=$productID\">$name</a></td>
 							<td>$price</td>
 							<td>$store</td>
 							<td>$address</td>
@@ -94,6 +95,42 @@
 				
 			mysqli_close($cxn);	
 				
+			}
+			
+			else {
+				echo "New Products!";
+				$cxn = mysqli_connect('localhost', 'root', '', 'shopsmart') or die ('Could not connect');
+				$query = mysqli_query($cxn, "SELECT product.productID, product.productName, product.price, store.storeName, store.address FROM product INNER JOIN store ON product.storeID=store.storeID WHERE numberInStock>0 ORDER BY product.productID DESC LIMIT 3");
+				
+				$counter = 0;
+				while($row = mysqli_fetch_array($query)) {
+					$counter++;
+					
+					if ($counter==1)
+						echo "<tr>
+						<td colspan=\"4\" style=\"text-align:center;\">New Products!!!!!</td>
+					</tr>";
+					echo "<tr>
+						<th>Product</th>
+						<th>Price</th>
+						<th>Store</th>
+						<th>Address</th>
+					</tr>";
+					
+					$productID = $row['productID'];
+					$name = $row['productName'];
+					$price = $row['price'];
+					$store = $row['storeName'];
+					$address = $row['address'];
+					echo "<tr>
+							<td><a href=\"product.php?pid=$productID\">$name</a></td>
+							<td>$price</td>
+							<td>$store</td>
+							<td>$address</td>
+						<tr>";
+				}
+				mysqli_close($cxn);	
+					
 			}
 		?>
 		</table>
