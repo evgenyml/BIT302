@@ -98,7 +98,6 @@
 			}
 			
 			else {
-				echo "New Products!";
 				$cxn = mysqli_connect('localhost', 'root', '', 'shopsmart') or die ('Could not connect');
 				$query = mysqli_query($cxn, "SELECT product.productID, product.productName, product.price, store.storeName, store.address FROM product INNER JOIN store ON product.storeID=store.storeID WHERE numberInStock>0 ORDER BY product.productID DESC LIMIT 3");
 				
