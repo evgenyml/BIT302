@@ -105,7 +105,7 @@
 				while($row = mysqli_fetch_array($query)) {
 					$counter++;
 					
-					if ($counter==1)
+					if ($counter==1) {
 						echo "<tr>
 						<td colspan=\"4\" style=\"text-align:center;\">New Products!!!!!</td>
 					</tr>";
@@ -115,7 +115,7 @@
 						<th>Store</th>
 						<th>Address</th>
 					</tr>";
-					
+					}
 					$productID = $row['productID'];
 					$name = $row['productName'];
 					$price = $row['price'];
