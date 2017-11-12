@@ -35,3 +35,14 @@ create table Product (
 	foreign key(storeID) references Store(storeID),
 	foreign key(categoryID) references Category(categoryID)
 );
+
+create table comment (
+	commentID int not null AUTO_INCREMENT,
+    productID int(11),
+    author varchar(255),
+    comment text,
+    date date,
+    primary key(commentID),
+    foreign key(productID) references product(productID)
+    
+   )
