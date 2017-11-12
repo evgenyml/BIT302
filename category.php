@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php session_start(); ?>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css"></link>
@@ -7,7 +8,7 @@
 <div class="header">
 			<div class="logout">
 				<span style="float:right;">
-					<a href="logout.php" style="color:white; background-color:black; border-radius:10px; padding: 5px 10px;text-decoration:none;font-size:20px;font-weight:bold;">Logout</a>
+					Hello, <?php echo $_SESSION['login_user']; ?><a href="logout.php" style="color:white; background-color:black; border-radius:10px; padding: 5px 10px;text-decoration:none;font-size:20px;font-weight:bold; margin-left:5px; margin-right:5px;">Logout</a>
 				</span>
 			<div id="logo" style="text-align:center; margin-top:10px;"><span style="font-family:Impact; font-size:80px; color:orange; font-style:italic;">ShopSmart</span></div>
 		</div>
@@ -35,7 +36,7 @@
 		$categoryID = $_GET['cid'];
 			
 		$cxn = mysqli_connect('localhost', 'root', '', 'shopsmart') or die ('Could not connect');
-		$query = mysqli_query($cxn, "SELECT product.productID, product.productName, product.price, store.storeName, store.address FROM product INNER JOIN store ON product.storeID=store.storeID WHERE categoryID=$categoryID AND numberInStock>0");  
+		$query = mysqli_query($cxn, "SELECT product.productID, product.productName, product.price, store.storeName, store.address FROM product INNER JOIN store ON product.storeID=store.storeID WHERE categoryID=$categoryID AND numberInStock>0 ORDER BY product.productName");  
 			
 		$counter = 0;
 				while($row = mysqli_fetch_array($query)) {
