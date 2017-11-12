@@ -4,80 +4,13 @@
 <html>
 	<head>
 		<title>ShopSmart</title>
-		<style type="text/css">
-			body {
-				background-color:grey;
-				font-family:Cooper Black;
-			}
-			
-			.producttable {
-				margin:20px auto;
-				padding:10px;
-				font-size:15px;
-				font-family:Cooper Black;
-					
-			}
-			
-			.producttable td {
-				padding:5px;
-			}
-			.producttable th {
-					background-color:#3366cc;
-					text-align:left;
-					
-			}
-				
-			input[type="submit"] {
-				font-size:15px;
-				font-weight:bold;
-				color:white;
-				background-color:black;
-				border:none;
-				border-radius:25px;
-				padding:5px;
-				width:100px;
-			}
-			
-			.categories li:first {
-				border-radius:25px;
-			}
-			
-			.categories li {
-				list-style-type:none;
-				border:2px solid blue;
-				width:auto;
-				text-align:center;
-				color:black;
-			}
-				
-			.categories a {
-				text-decoration:none;
-			}
-			
-			.header {
-				clear:both;
-			}
-			
-			.catmenu {
-				float:left;
-				width:300px;
-				clear:none;
-			}
-			
-			.products {
-				width:auto;
-				float:left;
-				margin-left:20px;
-				margin-top:10px;
-			}
-		</style>
-		
+		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	<body>
 		<div class="header">
 			<div class="logout">
 				<span style="float:right;">
-					<a href="logout.php" style="color:white; background-color:black; border-radius:10px; padding: 5px 10px;text-decoration:none;font-size:20px;font-weight:bold;">Logout</a>
+					Hello, <?php echo $_SESSION['login_user']; ?><a href="logout.php" style="color:white; background-color:black; border-radius:10px; padding: 5px 10px;text-decoration:none;font-size:20px;font-weight:bold; margin-left:5px; margin-right:5px;">Logout</a>
 				</span>
 			<div id="logo" style="text-align:center; margin-top:10px;"><span style="font-family:Impact; font-size:80px; color:orange; font-style:italic;">ShopSmart</span></div>
 		</div>
@@ -145,10 +78,10 @@
 									<td>$store</td>
 									<td>$address</td>
 								<tr>";
+								
 						}
 						
 						if ($counter==0)
-							// echo "Sorry, no matching products found";
 							echo "<tr>
 								<td colspan=\"4\" style=\"text-align:center;\">Sorry, no matching products found</td>
 							</tr>";
@@ -159,7 +92,7 @@
 					
 					else {
 						$cxn = mysqli_connect('localhost', 'root', '', 'shopsmart') or die ('Could not connect');
-						$query = mysqli_query($cxn, "SELECT product.productID, product.productName, product.price, store.storeName, store.address FROM product INNER JOIN store ON product.storeID=store.storeID WHERE numberInStock>0 ORDER BY product.productID DESC LIMIT 3");
+						$query = mysqli_query($cxn, "SELECT product.productID, product.productName, product.price, store.storeName, store.address FROM product INNER JOIN store ON product.storeID=store.storeID WHERE numberInStock>0 ORDER BY product.productID DESC LIMIT 5");
 						
 						$counter = 0;
 						while($row = mysqli_fetch_array($query)) {
@@ -189,6 +122,7 @@
 									<td>$store</td>
 									<td>$address</td>
 								<tr>";
+								
 						}
 						mysqli_close($cxn);	
 							
