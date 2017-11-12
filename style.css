@@ -1,0 +1,108 @@
+html {
+height: 100%;	
+}
+
+body {
+	
+	background: linear-gradient(white, red);
+	font-family:Cooper Black;
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+			.producttable {
+				margin:20px auto;
+				padding:10px;
+				font-size:15px;
+				font-family:Cooper Black;
+					
+			}
+			
+			.producttable td {
+				padding:5px;
+			}
+			.producttable th {
+					background-color:#3366cc;
+					text-align:left;
+					
+			}
+			input[type="submit"] {
+				font-size:15px;
+				font-weight:bold;
+				color:white;
+				background-color:black;
+				border:none;
+				border-radius:25px;
+				padding:5px;
+				width:100px;
+			}
+			
+			.categories {
+				border-radius:25px;
+			}
+			
+			.categories li {
+				list-style-type:none;
+				border:1px solid white;
+				width:auto;
+				text-align:center;
+				background-color:black;
+				color:white;
+			}
+			
+			.categories li:hover {
+				background-color:white;
+				color:black;
+			}
+				
+			.categories a {
+				text-decoration:none;
+			}
+			
+			.header {
+				clear:both;
+			}
+			
+			.catmenu {
+				float:left;
+				width:300px;
+				clear:none;
+			}
+			
+			.products {
+				width:900px;
+				float:left;
+				margin-left:20px;
+				margin-top:10px;
+			}
+			
+			.product {
+				float:left;
+				margin-left:20px;
+				margin-top:10px;
+				margin-bottom:30px;	
+			}
+			
+	#commentform {
+		margin-top:30px;
+		clear:both;
+	}
+	
+	#comments {
+		margin-top:50px;
+		clear:both;
+	}
+	
+	#comments h3 {
+		text-align:center;
+	}
+	
+	.comment {
+		border-radius:25px;
+		padding:15px;
+		margin:10px 0px;
+		background: linear-gradient(white, grey);
+		word-wrap: break-word;
+	}
